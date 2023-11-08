@@ -9,8 +9,17 @@ git clone $1 student-submission
 echo 'Finished cloning'
 
 
-# Draw a picture/take notes on the directory structure that's set up after
-# getting to this point
+if [ ! -f "ListExamples.java"]; Then
+    echo 'Missing file: ListExamples.java'
+    echo 'Please make sure the file has the correct name and is not hidden inside any directories'
+    exit 
+fi
 
-# Then, add here code to compile and run, and do any post-processing of the
-# tests
+cp -r student-submission grading-area
+cp  GradeServer.java grading-area/
+cp Server.java grading-area/
+cp TestListExamples.java grading-area/
+cd grading-area
+
+javac *.java
+java TestListExamples
